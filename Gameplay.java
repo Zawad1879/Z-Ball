@@ -16,8 +16,9 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 	private boolean play = false;
 	private int score = 0;
 	
-	
-	private int totalBricks = 21;
+	//reduced bricks by 2 to account for the 2 unbreakable bricks
+	//private int totalBricks = 21;
+	private int totalBricks = 19;
 	
 	private Timer timer;
 	private int delay = 10;
@@ -121,6 +122,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 						Rectangle ballRect = new Rectangle(ballposX, ballposY, 20, 20);
 						
 						if (ballRect.intersects(brickRect)){
+							
 							map.setBrickValue(i, j, 0);
 							totalBricks -= 1;
 							score +=5;
