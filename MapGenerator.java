@@ -22,6 +22,7 @@ public class MapGenerator {
 		map[2][1] = 2;
 		map[2][3] = 2;
 		map[2][5] = 2;
+		map[2][6] = 2;
 		
 		
 		brickWidth = 540/col;

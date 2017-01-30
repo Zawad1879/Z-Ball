@@ -16,9 +16,9 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 	private boolean play = false;
 	private int score = 0;
 	
-	//reduced bricks by 2 to account for the 2 unbreakable bricks
+	//reduced bricks by 7 to account for the 7 unbreakable bricks
 	//private int totalBricks = 21;
-	private int totalBricks = 19;
+	private int totalBricks = 14;
 	
 	private Timer timer;
 	private int delay = 10;
@@ -27,7 +27,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 	
 	private int ballposX = 120;
 	private int ballposY = 350;
-	private int ballXdir = -5;
+	private int ballXdir = -1;
 	private int ballYdir = -2;
 	
 	private MapGenerator map;
@@ -121,15 +121,22 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 						Rectangle brickRect = new Rectangle(brickX, brickY, brickWidth, brickHeight);
 						Rectangle ballRect = new Rectangle(ballposX, ballposY, 20, 20);
 						
+						
 						if (ballRect.intersects(brickRect)){
 							
+							System.out.println("Touched brick");
+							
+							if(map.map[i][j] == 1){
 							map.setBrickValue(i, j, 0);
 							totalBricks -= 1;
 							score +=5;
-							
-							if(ballposX + 19 <= brickRect.x || ballposX + 1 >= brickRect.x + brickRect.width){
+							}
+							//if it hits left or right of brick
+							if((ballposX + 19 <= brickRect.x || ballposX + 1 >= brickRect.x + brickRect.width) && (ballposY + 19 <= brickRect.y + brickRect.height || ballposY + 1 >= brickRect.y)){
+								System.out.println("Touched left or right");
 								ballXdir = -ballXdir;
 							} else {
+								System.out.println("Touched top or bottom");
 								ballYdir = -ballYdir;
 							}
 							break A;
