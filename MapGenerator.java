@@ -15,7 +15,7 @@ public class MapGenerator {
 			}
 		}
 		
-		//added 2 unbreakable bricks
+		//added 6 unbreakable bricks
 		map[1][1] = 2;
 		map[1][3] = 2;
 		map[1][5] = 2;
